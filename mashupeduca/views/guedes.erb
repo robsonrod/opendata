@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Visualiza&ccedil;&atilde;o de Dados</title>
+<link type="text/css" href="Jit/Examples/css/base.css" rel="stylesheet" />
+<link type="text/css" href="Jit/Examples/css/BarChart.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery-1.4.2.js"></script>
+<script type="text/javascript" src="js/rockapi.jquery.json.js"></script>
+<script language="javascript" type="text/javascript" src="Jit/jit.js"></script>
+<script language="javascript" type="text/javascript" src="Jit/Examples/BarChart/example1.js"></script>
+<script>
+
+function DadosInep(){
+    var uf;
+    var regiao;
+    var ano91;
+
+    this.getUf=function(){
+        return this.uf;
+    };
+
+    this.setUf=function(novaUf){
+        this.uf = novaUf;
+    };
+
+    this.getRegiao=function(){
+        return this.regiao;
+    };
+
+    this.setRegiao=function(novaRegiao){
+        this.regiao = novaRegiao;
+    };
+
+    this.getAno91=function(){
+        return this.ano91;
+    };
+
+    this.setAno91=function(novoAno91){
+        this.ano91 = novoAno91;
+    };
+}
+
+
+function buscaJson(){
+
+	var url = document.bora.urlRobson.value;
+	//alert(url);
+
+	jQuery.getJSON(url+'?callback=?', function(json) {
+	//alert('json.id ' + json._id);
+
+    init(json);
+
+	});
+}
+function visualizaUrl(parametro,uf){
+
+	var parametro = parametro != "" ? parametro : document.bora.parametro.value;
+	var uf = uf != "" ? uf : document.bora.uf.value;
+	var url = 'http://robsonrod.cloudant.com/'+parametro+'/'+uf;
+	document.bora.urlRobson.value = url;
+}
+
+function atualizaUrlDiv(){
+	return document.bora.urlRobson.value;
+}
+
+</script>
+</head>
+<body>
+
+<form name="bora">
+
+ <div id="container">
+
+<div id="left-container">
+        <div class="text" id="linkId" title="">
+        <h4>
+			Evolu&ccedil;&atilde;o da educa&ccedil;&atilde;o
+        </h4>
+
+		<br><br>
+		<table width="">
+			<tr>
+				<td width="10%">Pesquisa</td>
+				<td>
+					<select name="parametro" onchange="visualizaUrl(this.value,'')">
+					    <option value="candidatos">Candidatos</option>
+					    <option value="concluintes">Concluintes</option>
+					    <option value="cursos">Cursos</option>
+					    <option value="matriculados">Matriculados</option>
+					    <option value="vagas">Vagas</option>
+					</select>
+				</td>
+			</tr>
+			<tr><td></td></tr>
+			<tr>
+				<td>Estado</td>
+				<td>
+					<select name="uf" onchange="visualizaUrl('',this.value)">
+					    <option value="AC">AC</option>
+					    <option value="AL">AL</option>
+					    <option value="AM">AM</option>
+					    <option value="AP">AP</option>
+					    <option value="BA">BA</option>
+					    <option value="CE">CE</option>
+					    <option value="DF">DF</option>
+					    <option value="ES">ES</option>
+					    <option value="GO">GO</option>
+					    <option value="MA">MA</option>
+					    <option value="MG">MG</option>
+					    <option value="MS">MS</option>
+					    <option value="MT">MT</option>
+					    <option value="PA">PA</option>
+					    <option value="PB">PB</option>
+					    <option value="PE">PE</option>
+					    <option value="PI">PI</option>
+					    <option value="PR">PR</option>
+					    <option value="RJ">RJ</option>
+					    <option value="RN">RN</option>
+					    <option value="RO">RO</option>
+					    <option value="RR">RR</option>
+					    <option value="RS">RS</option>
+					    <option value="SC">SC</option>
+					    <option value="SE">SE</option>
+					    <option value="SP">SP</option>
+					    <option value="TO">TO</option>
+					</select>
+				</td>
+			</tr>
+			<tr><td></td></tr>
+		</table>
+
+        </div>
+        <ul id="id-list"></ul>
+		<input id="update" type="button" class="theme button white" value="Vizualizar Dados" onclick="buscaJson();"></input>
+
+
+</div>
+
+<div id="center-container">
+    <div id="infovis"></div>
+</div>
+
+<div id="right-container">
+
+<div id="inner-details"></div>
+
+</div>
+
+<div id="log"></div>
+</div>
+  <br/>
+		<table border="0" width="780">
+			<tr>
+				<td width="10%">P&aacute;gina Json</td>
+				<td width="90%" align="left">
+				<input type="text" name="urlRobson" value="Link que retorna o json" readonly="readonly" size="60"/></td>
+			</tr>
+		</table>
+    <span>Dados podem ser obtidos no site do <a href="http://portal.inep.gov.br/web/censo-da-educacao-superior/evolucao-1980-a-2007">INEP</span>
+		<br/>
+		<br/>
+		<br/>
+  </form>
+</body>
+</html>
+

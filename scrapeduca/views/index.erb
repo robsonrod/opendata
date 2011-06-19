@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="description" content="" />
+<meta name="generator" content="Bluefish 2.0.1" />
+<title>Dados Evolu&ccedil;&atilde;o da Educa&ccedil;&atilde;o Superior no Brasil</title>
+<style type="text/css">
+<!--
+body {margin: 0; padding: 0; font: normal 82% sans-serif; background-image: url(blocksbg1.jpg); background-attachment: fixed;}
+h1 {margin: 0; margin-bottom: 0px; padding: 8px; color: #ffffff; background-image: url(laptop1.jpg); background-color: #909090;}
+
+#bread {margin-right:10%;margin-left:10%;margin-top: 0px; margin-bottom: 10px; padding: 5px; border-top: solid 1px #000000; border-bottom: solid 1px #000000; background-color: #909090; text-align: left;}
+
+/*#content {margin-right:10%;margin-left:10%; padding: 0; border-right: solid 1px #cccccc;border-left: solid 1px #cccccc; border-top: 0; border-bottom: solid 1px #ffffff;  background-color: #ffffff;}*/
+#content {margin-right:10%;margin-left:10%; padding: 0; border-right: solid 1px #cccccc;border-left: solid 1px #cccccc; border-top: 0; border-bottom: solid 1px #ffffff;  background-color: #ffffff;}
+#content h3 {margin: 0; padding: 2px; font-weight: normal; background-color: #c0c0c0; border-top: solid 1px #000000; border-bottom: solid 1px #000000;}
+#content p {margin: 5px; color: #000000;}
+#content a {color: #0066cc; text-decoration: none;}
+#content a:hover {color: #0000ff; text-decoration: underline;}
+#content li {margin: 0px; padding: 0px;}
+
+
+#footer {margin-right:10%;margin-left:10%; clear: both; margin-top: 0px; padding: 5px; border: solid 1px #cccccc; background-color: #909090;}
+#footer p {float: left; margin: 0;}
+#footer a {margin-left: 2px; margin-right: 2px; color: #000000; text-decoration: none;}
+
+
+-->
+</style>
+
+</head>
+
+<body>
+<div id="bread">
+<h1>API - Evolu&ccedil;&atilde;o da Educa&ccedil;&atilde;o Superior no Brasil</h1>
+</div>
+
+<div id="content">
+<h3>Objetivo:</h3>
+<p>Disponiblizar os dados com o processo de evolu&ccedil;&atilde;o da educa&ccedil;&atilde;o no Brasil entre os anos de 1991 a 2007, utilizando uma API <a href="http://pt.wikipedia.org/wiki/REST">REST</a>.
+Facilitando assim, a cria&ccedil;&atilde;o de aplica&ccedil;&otilde;es para a visualiza&ccedil;&atilde;o desses dados, tamb&eacute;m conhecidas como <a href="http://pt.wikipedia.org/wiki/Mashup">Mashup</a>.</p>
+<br>
+<h3>Considera&ccedil;&otilde;es:</h3>
+<p>
+<ul>
+<li>Todas essas informa&ccedil;&otilde;es podem ser encontradas no site do <a href="http://portal.inep.gov.br/web/censo-da-educacao-superior/evolucao-1980-a-2007">INEP</a></li>
+<li>Todas as respostas ser&atilde;o apresentadas no formato <a href="http://pt.wikipedia.org/wiki/JSON">JSON</a></li>
+<li>O m&eacute;todo <a href="http://pt.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP</a> de acesso a informa&ccedil;&atilde;o &eacute; sempre <a href="http://pt.wikipedia.org/wiki/Hypertext_Transfer_Protocol#M.C3.A9todos">GET</a></li>
+</ul>
+</p>
+<h3>URIs:</h3>
+<p>
+A informa&ccedil;&atilde;o est&aacute; disponibilizada em cinco endere&ccedil;os :
+
+<ul>
+	<li><a href="http://robsonrod.cloudant.com/candidatos">candidatos</a></li>
+	<li><a href="http://robsonrod.cloudant.com/concluintes">concluintes</a></li>
+	<li><a href="http://robsonrod.cloudant.com/cursos">cursos</a></li>
+	<li><a href="http://robsonrod.cloudant.com/matriculados">matriculados</a></li>
+	<li><a href="http://robsonrod.cloudant.com/vagas">vagas</a></li>
+</ul>
+</p>
+<p>
+O acesso ao conte&uacute;do da informa&ccedil;&atilde;o disponibilizada ser&aacute; da seguinte forma:
+<br>
+<span>Por exemplo:</span>
+<br>
+Quero acessar o n&uacute;mero total de vagas oferecidas no estado do Maranh&atilde;o (bem bairrista isso =)) e, sabendo que a
+sigla do Maranh&atilde;o &eacute;: <b>MA</b> ent&atilde;o:
+
+<ul>
+<li>Acessamos o endere&ccedil;o: <b>http://robsonrod.cloudant.com</b> - Essa &eacute; a URL base de acesso &agrave;s informa&ccedil;&otilde;es;</li>
+<li>Informo o par&acirc;metro <b>vagas</b> na URL base ficando assim: <b>http://robsonrod.cloudant.com/vagas</b> - Apelidei isso de sub-URL</li>
+<li>E ao final, acrescento a sigla UF do estado ficando assim: <b>http://robsonrod.cloudant.com/vagas/MA.</b> - Isso aqui foi apelidado de par&acirc;metro de busca</li>
+</ul>
+<p>
+O processo ser&aacute; o mesmo para os outros endere&ccedil;os listados anteriormente.<br>
+Lembrando: Os dados sempre ser&ccedil;&atilde;o retornado no formato JSON
+</p>
+
+</p>
+<br>
+</div>
+
+
+<div id="footer">
+
+</div>
+</body>
+
+</html>
+
